@@ -10,6 +10,18 @@ function toggleMenu() {
     authButtons.classList.toggle('active');
     mobileClose.classList.toggle('active');
     body.classList.toggle('menu-active');
+
+    // Hamburger menü animasyonu
+    const spans = hamburger.querySelectorAll('span');
+    if (navLinks.classList.contains('active')) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+    } else {
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+    }
 }
 
 hamburger.addEventListener('click', toggleMenu);
@@ -23,4 +35,13 @@ document.addEventListener('click', (e) => {
         !e.target.closest('.auth-buttons')) {
         toggleMenu();
     }
+});
+
+// Menü linklerine tıklandığında menüyü kapat
+navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (navLinks.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
 }); 
