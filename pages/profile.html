@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Profil - MetaTR</title>
+</head>
+
+<body>
+    <!-- Üst Menü -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/images/metatr.png" alt="MetaTR Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="regions.html">Bölgeler</a></li>
+                <li><a href="shop.html">Market</a></li>
+                <li><a href="exchange.html">Borsa</a></li>
+                <li><a href="game.html">Oyun</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="profile.html" class="btn btn-profil">Profil</a>
+                <a href="home.html" class="btn btn-primary">Çıkış Yap</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <button class="mobile-close">×</button>
+        </div>
+    </nav>
+
+    <!-- Ana İçerik -->
+    <main class="container">
+        <!-- Profil Başlığı -->
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <img src="assets/images/avatar.png" alt="Profil Resmi">
+            </div>
+            <div class="profile-info">
+                <h1>Kullanıcı Adı</h1>
+                <p class="profile-status">Premium Üye</p>
+            </div>
+        </div>
+
+        <!-- Bakiye Bilgileri -->
+        <div class="balance-info">
+            <div class="game-balance">
+                <img src="assets/images/coin.png" alt="Coin" class="coin-icon">
+                <span>Oyun Parası: 1,500</span>
+            </div>
+            <div class="real-balance">
+                <img src="assets/images/money.png" alt="TL" class="tl-icon">
+                <span>Bakiye: ₺150.00</span>
+            </div>
+        </div>
+
+        <!-- Profil Sekmeler -->
+        <div class="profile-tabs">
+            <button class="tab-btn active" data-category="stats">İstatistikler</button>
+            <button class="tab-btn" data-category="inventory">Envanter</button>
+            <button class="tab-btn" data-category="history">İşlem Geçmişi</button>
+            <button class="tab-btn" data-category="settings">Ayarlar</button>
+        </div>
+
+        <!-- İçerik Bölümleri -->
+        <div class="profile-content" data-category="stats">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Toplam Oyun Süresi</h3>
+                    <p class="stat-value">120 Saat</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Toplam Kazanç</h3>
+                    <p class="stat-value">25,000 Coin</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Başarı Puanı</h3>
+                    <p class="stat-value">850</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Seviye</h3>
+                    <p class="stat-value">15</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-content" data-category="inventory">
+            <div class="inventory-grid">
+                <div class="inventory-item">
+                    <img src="assets/images/item.png" alt="Buğday">
+                    <h3>Buğday</h3>
+                    <p>Miktar: 500</p>
+                </div>
+                <div class="inventory-item">
+                    <img src="assets/images/item.png" alt="Mısır">
+                    <h3>Mısır</h3>
+                    <p>Miktar: 300</p>
+                </div>
+                <!-- Diğer envanter öğeleri -->
+            </div>
+        </div>
+
+        <div class="profile-content" data-category="history">
+            <div class="history-list">
+                <div class="history-item">
+                    <div class="history-info">
+                        <h3>Coin Satın Alma</h3>
+                        <p>100 Coin - ₺10.00</p>
+                    </div>
+                    <span class="history-date">22.03.2024</span>
+                </div>
+                <div class="history-item">
+                    <div class="history-info">
+                        <h3>Tohum Satışı</h3>
+                        <p>200 Coin Kazanç</p>
+                    </div>
+                    <span class="history-date">21.03.2024</span>
+                </div>
+                <!-- Diğer işlem geçmişi -->
+            </div>
+        </div>
+
+        <div class="profile-content" data-category="settings">
+            <div class="settings-form">
+                <div class="form-group">
+                    <label>E-posta</label>
+                    <input type="email" value="kullanici@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Şifre Değiştir</label>
+                    <input type="password" placeholder="Yeni Şifre">
+                </div>
+                <div class="form-group">
+                    <label>Profil Resmi</label>
+                    <input type="file">
+                </div>
+                <button class="save-btn">Kaydet</button>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="assets/js/app.js"></script>
+
+</html>

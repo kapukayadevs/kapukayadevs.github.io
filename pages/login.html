@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap - MetaTR</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="auth-page">
+    <div class="auth-wrapper">
+        <!-- Sol Taraf - Showcase -->
+        <div class="auth-showcase">
+            <div class="showcase-slides">
+                <div class="slide active">
+                    <img src="assets/images/1.png" alt="Tarla Görünümü">
+                    <div class="slide-content">
+                        <h2>Tarlanız Sizi Bekliyor</h2>
+                        <p>Hemen giriş yapın ve tarlanızı yönetmeye devam edin.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="assets/images/2.png" alt="Market Görünümü">
+                    <div class="slide-content">
+                        <h2>Günlük Bonuslar</h2>
+                        <p>Her gün giriş yapın, ekstra coinler kazanın.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="assets/images/1.png" alt="Borsa Görünümü">
+                    <div class="slide-content">
+                        <h2>Fırsatları Kaçırmayın</h2>
+                        <p>Piyasadaki en iyi fırsatları yakalayın.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+
+        <!-- Sağ Taraf - Giriş Formu -->
+        <div class="auth-form-wrapper">
+            <div class="auth-form-container">
+                <div class="auth-logo">
+                    <img src="assets/images/metatr.png" alt="MetaTR Logo">
+                </div>
+                <h1>Tekrar Hoş Geldiniz</h1>
+                <p class="auth-subtitle">Tarlanız sizi özledi!</p>
+
+                <form class="auth-form">
+                    <div class="form-group">
+                        <label>E-posta veya Kullanıcı Adı</label>
+                        <input type="text" required placeholder="E-posta veya kullanıcı adınız">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Şifre</label>
+                        <div class="password-input">
+                            <input type="password" required placeholder="••••••••">
+                            <a href="/forgot-password" class="forgot-password">Şifremi Unuttum</a>
+                        </div>
+                    </div>
+
+                    <div class="form-group checkbox">
+                        <label>
+                            <input type="checkbox">
+                            <span>Beni hatırla</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="auth-submit">Giriş Yap</button>
+
+                    <p class="auth-link">
+                        Hesabınız yok mu? <a href="register.html">Kayıt Olun</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Şifremi Unuttum Modal -->
+    <div class="modal" id="forgotPasswordModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Şifre Sıfırlama</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-description">E-posta adresinizi girin, size şifre sıfırlama bağlantısı gönderelim.</p>
+                <form class="forgot-password-form">
+                    <div class="form-group">
+                        <label>E-posta</label>
+                        <input type="email" required placeholder="E-posta adresiniz">
+                    </div>
+                    <button type="submit" class="auth-submit">Sıfırlama Bağlantısı Gönder</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Slider için basit bir JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            // Her 5 saniyede bir slayt değiştir
+            setInterval(nextSlide, 5000);
+
+            // Noktalara tıklama işlevi
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    showSlide(currentSlide);
+                });
+            });
+
+            // Modal işlemleri
+            const modal = document.getElementById('forgotPasswordModal');
+            const forgotPasswordLink = document.querySelector('.forgot-password');
+            const modalClose = document.querySelector('.modal-close');
+            const forgotPasswordForm = document.querySelector('.forgot-password-form');
+
+            // Şifremi Unuttum linkine tıklandığında
+            forgotPasswordLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                modal.classList.add('active');
+            });
+
+            // Modal kapatma butonuna tıklandığında
+            modalClose.addEventListener('click', function() {
+                modal.classList.remove('active');
+            });
+
+            // Modal dışına tıklandığında
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+
+            // Form gönderildiğinde
+            forgotPasswordForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                alert('Şifre sıfırlama bağlantısı ' + email + ' adresine gönderildi.');
+                modal.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html> 

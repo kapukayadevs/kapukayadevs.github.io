@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarlam - MetaTR</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Üst Menü -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/images/metatr.png" alt="MetaTR Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="regions.html">Bölgeler</a></li>
+                <li><a href="shop.html">Market</a></li>
+                <li><a href="exchange.html">Borsa</a></li>
+                <li><a href="game.html">Oyun</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="profile.html" class="btn btn-profil">Profil</a>
+                <a href="home.html" class="btn btn-primary">Çıkış Yap</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <button class="mobile-close">×</button>
+        </div>
+    </nav>
+
+    <!-- Ana İçerik -->
+    <main class="container">
+        <!-- Tarla Başlık ve Durum Bilgisi -->
+        <div class="my-plot-header">
+            <div class="plot-title">
+                <h1>Tarla #3429</h1>
+                <span class="plot-status active">Aktif</span>
+            </div>
+            <div class="plot-quick-stats">
+                <div class="stat">
+                    <span class="stat-label">Verimlilik</span>
+                    <span class="stat-value">85%</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Su Seviyesi</span>
+                    <span class="stat-value">70%</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Hasat Zamanı</span>
+                    <span class="stat-value">3 gün</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarla Haritası ve Yönetim Alanı -->
+        <div class="plot-management">
+            <!-- Tarla Haritası -->
+            <div class="plot-map">
+                <div class="map-grid">
+                    <!-- 10x10 grid oluşturuyoruz -->
+                    <div class="map-cell empty" data-position="0-0"></div>
+                    <div class="map-cell empty" data-position="0-1"></div>
+                    <div class="map-cell planted" data-position="0-2">🌱</div>
+                    <div class="map-cell empty" data-position="0-3"></div>
+                    <div class="map-cell watered" data-position="0-4">💧</div>
+                    <div class="map-cell empty" data-position="0-5"></div>
+                    <div class="map-cell planted" data-position="0-6">🌱</div>
+                    <div class="map-cell empty" data-position="0-7"></div>
+                    <div class="map-cell watered" data-position="0-8">💧</div>
+                    <div class="map-cell empty" data-position="0-9"></div>
+                    <!-- 2. sıra -->
+                    <div class="map-cell planted" data-position="1-0">🌱</div>
+                    <div class="map-cell watered" data-position="1-1">💧</div>
+                    <div class="map-cell empty" data-position="1-2"></div>
+                    <div class="map-cell planted" data-position="1-3">🌱</div>
+                    <div class="map-cell empty" data-position="1-4"></div>
+                    <div class="map-cell watered" data-position="1-5">💧</div>
+                    <div class="map-cell empty" data-position="1-6"></div>
+                    <div class="map-cell planted" data-position="1-7">🌱</div>
+                    <div class="map-cell empty" data-position="1-8"></div>
+                    <div class="map-cell watered" data-position="1-9">💧</div>
+                    <!-- Diğer sıralar için benzer yapıyı tekrarlayın -->
+                </div>
+            </div>
+
+            <!-- Yönetim Araçları -->
+            <div class="plot-tools">
+                <h2>Tarla Yönetimi</h2>
+                
+                <!-- Seçili Alan Bilgisi -->
+                <div class="selected-cell-info">
+                    <h3>Seçili Alan: <span id="selected-position">-</span></h3>
+                    <p>Durum: <span id="selected-status">Seçim yapılmadı</span></p>
+                </div>
+
+                <!-- Araçlar -->
+                <div class="tools-grid">
+                    <button class="tool-btn" data-tool="plant">
+                        <span class="tool-icon">🌱</span>
+                        <span>Ekim</span>
+                        <small>Tohum: 50</small>
+                    </button>
+                    <button class="tool-btn" data-tool="water">
+                        <span class="tool-icon">💧</span>
+                        <span>Sulama</span>
+                        <small>Su: 100%</small>
+                    </button>
+                    <button class="tool-btn" data-tool="harvest">
+                        <span class="tool-icon">🌾</span>
+                        <span>Hasat</span>
+                        <small>Hazır: 3</small>
+                    </button>
+                    <button class="tool-btn" data-tool="fertilize">
+                        <span class="tool-icon">💩</span>
+                        <span>Gübreleme</span>
+                        <small>Gübre: 30</small>
+                    </button>
+                </div>
+
+                <!-- Aktif Araç Bilgisi -->
+                <div class="active-tool-info">
+                    <p>Aktif Araç: <span id="active-tool">Yok</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Envanter ve İstatistikler -->
+        <div class="plot-inventory">
+            <h2>Envanter</h2>
+            <div class="inventory-grid">
+                <div class="inventory-item">
+                    <img src="assets/images/item.png" alt="Buğday Tohumu">
+                    <h3>Buğday</h3>
+                    <p>Miktar: 500</p>
+                </div>
+                <div class="inventory-item">
+                    <img src="assets/images/item.png" alt="Gübre">
+                    <h3>Mısır</h3>
+                    <p>Miktar: 300</p>
+                </div>
+                <!-- Diğer envanter öğeleri -->
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html> 

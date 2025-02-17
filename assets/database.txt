@@ -1,0 +1,131 @@
+-- Kullanıcılar Tablosu
+CREATE TABLE Users (
+    UserId INT PRIMARY KEY IDENTITY(1,1),
+    Username NVARCHAR(50) UNIQUE NOT NULL,
+    Email NVARCHAR(100) UNIQUE NOT NULL,
+    PasswordHash NVARCHAR(MAX) NOT NULL,
+    FirstName NVARCHAR(50),
+    LastName NVARCHAR(50),
+    Balance DECIMAL(18,2) DEFAULT 0, -- TL Bakiye
+    CoinBalance DECIMAL(18,2) DEFAULT 0, -- Coin Bakiye
+    CreatedAt DATETIME DEFAULT GETDATE(),
+    LastLoginAt DATETIME,
+    IsActive BIT DEFAULT 1,
+    AvatarUrl NVARCHAR(255)
+)
+
+-- Bölgeler Tablosu
+CREATE TABLE Regions (
+    RegionId INT PRIMARY KEY IDENTITY(1,1),
+    Name NVARCHAR(50) NOT NULL,
+    Description NVARCHAR(MAX),
+    ImageUrl NVARCHAR(255),
+    BasePrice DECIMAL(18,2), -- Bölgedeki arsaların taban fiyatı
+    IsActive BIT DEFAULT 1
+)
+
+-- Arsalar Tablosu
+CREATE TABLE Plots (
+    PlotId INT PRIMARY KEY IDENTITY(1,1),
+    RegionId INT FOREIGN KEY REFERENCES Regions(RegionId),
+    OwnerId INT FOREIGN KEY REFERENCES Users(UserId),
+    Name NVARCHAR(100),
+    Size INT, -- Arsa büyüklüğü (10x10 gibi)
+    Price DECIMAL(18,2),
+    Fertility INT, -- Verimlilik yüzdesi
+    WaterSource BIT, -- Su kaynağı var mı?
+    SoilType NVARCHAR(50),
+    Status NVARCHAR(20), -- (Available, Sold, Rented)
+    CreatedAt DATETIME DEFAULT GETDATE(),
+    LastUpdatedAt DATETIME
+)
+
+-- Arsa Parselleri (10x10 grid için)
+CREATE TABLE PlotCells (
+    CellId INT PRIMARY KEY IDENTITY(1,1),
+    PlotId INT FOREIGN KEY REFERENCES Plots(PlotId),
+    PositionX INT,
+    PositionY INT,
+    Status NVARCHAR(20), -- (Empty, Planted, Watered, Ready)
+    PlantType INT, -- Ekili ürün tipi
+    PlantedAt DATETIME,
+    WateredAt DATETIME,
+    FertilizedAt DATETIME
+)
+
+-- Market Ürünleri
+CREATE TABLE Items (
+    ItemId INT PRIMARY KEY IDENTITY(1,1),
+    Name NVARCHAR(100),
+    Description NVARCHAR(MAX),
+    Category NVARCHAR(50), -- (Seed, Fertilizer, Tool, Animal, Decoration)
+    Price DECIMAL(18,2),
+    ImageUrl NVARCHAR(255),
+    IsActive BIT DEFAULT 1,
+    GrowthTime INT, -- Tohum için büyüme süresi (saat)
+    YieldAmount INT -- Tohum için hasat miktarı
+)
+
+-- Kullanıcı Envanterleri
+CREATE TABLE Inventories (
+    InventoryId INT PRIMARY KEY IDENTITY(1,1),
+    UserId INT FOREIGN KEY REFERENCES Users(UserId),
+    ItemId INT FOREIGN KEY REFERENCES Items(ItemId),
+    Quantity INT DEFAULT 0
+)
+
+-- Market İşlemleri
+CREATE TABLE MarketTransactions (
+    TransactionId INT PRIMARY KEY IDENTITY(1,1),
+    UserId INT FOREIGN KEY REFERENCES Users(UserId),
+    ItemId INT FOREIGN KEY REFERENCES Items(ItemId),
+    Quantity INT,
+    TotalPrice DECIMAL(18,2),
+    TransactionType NVARCHAR(20), -- (Buy, Sell)
+    CreatedAt DATETIME DEFAULT GETDATE()
+)
+
+-- Coin İşlemleri
+CREATE TABLE CoinTransactions (
+    TransactionId INT PRIMARY KEY IDENTITY(1,1),
+    UserId INT FOREIGN KEY REFERENCES Users(UserId),
+    Amount DECIMAL(18,2),
+    Price DECIMAL(18,2), -- TL karşılığı
+    TransactionType NVARCHAR(20), -- (Buy, Sell)
+    Status NVARCHAR(20), -- (Pending, Completed, Cancelled)
+    CreatedAt DATETIME DEFAULT GETDATE(),
+    CompletedAt DATETIME
+)
+
+-- Arsa Teklifleri
+CREATE TABLE PlotOffers (
+    OfferId INT PRIMARY KEY IDENTITY(1,1),
+    PlotId INT FOREIGN KEY REFERENCES Plots(PlotId),
+    BuyerId INT FOREIGN KEY REFERENCES Users(UserId),
+    OfferAmount DECIMAL(18,2),
+    Status NVARCHAR(20), -- (Pending, Accepted, Rejected)
+    CreatedAt DATETIME DEFAULT GETDATE(),
+    ResponsedAt DATETIME
+)
+
+-- Kullanıcı İstatistikleri
+CREATE TABLE UserStats (
+    StatId INT PRIMARY KEY IDENTITY(1,1),
+    UserId INT FOREIGN KEY REFERENCES Users(UserId),
+    TotalPlayTime INT, -- Dakika cinsinden
+    TotalEarnings DECIMAL(18,2),
+    AchievementPoints INT,
+    Level INT DEFAULT 1,
+    LastUpdatedAt DATETIME
+)
+
+Users: Kullanıcı hesapları ve bakiyeleri
+Regions: Oyun içi bölgeler
+Plots: Arsalar ve özellikleri
+PlotCells: 10x10 grid sistemi için arsa parselleri
+Items: Market ürünleri (tohumlar, gübreler, aletler vb.)
+Inventories: Kullanıcı envanterleri
+MarketTransactions: Market alım-satım işlemleri
+CoinTransactions: Coin alım-satım işlemleri
+PlotOffers: Arsa teklifleri
+UserStats: Kullanıcı istatistikleri

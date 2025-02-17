@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt Ol - MetaTR</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="auth-page">
+    <div class="auth-wrapper">
+        <!-- Sol Taraf - Slider -->
+        <div class="auth-showcase">
+            <div class="showcase-slides">
+                <div class="slide active">
+                    <img src="assets/images/1.png" alt="Tarla Görünümü">
+                    <div class="slide-content">
+                        <h2>Kendi Tarlanızı Yönetin</h2>
+                        <p>MetaTR'de kendi sanal tarlanızı oluşturun, ürünler yetiştirin ve gelir elde edin.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="assets/images/2.png" alt="Market Görünümü">
+                    <div class="slide-content">
+                        <h2>Market Sistemi</h2>
+                        <p>Ürünlerinizi satın, tohumlar ekleyin ve tarlanızı geliştirin.</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="assets/images/1.png" alt="Borsa Görünümü">
+                    <div class="slide-content">
+                        <h2>Borsa İşlemleri</h2>
+                        <p>Coin alım satımı yaparak kazançlarınızı artırın.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+
+        <!-- Sağ Taraf - Kayıt Formu -->
+        <div class="auth-form-wrapper">
+            <div class="auth-form-container">
+                <div class="auth-logo">
+                    <img src="assets/images/metatr.png" alt="MetaTR Logo">
+                </div>
+                <h1>MetaTR'ye Hoş Geldiniz</h1>
+                <p class="auth-subtitle">Sanal tarım dünyasına adım atın</p>
+
+                <form class="auth-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Ad</label>
+                            <input type="text" required placeholder="Adınız">
+                        </div>
+                        <div class="form-group">
+                            <label>Soyad</label>
+                            <input type="text" required placeholder="Soyadınız">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Kullanıcı Adı</label>
+                        <input type="text" required placeholder="Kullanıcı adınız">
+                    </div>
+
+                    <div class="form-group">
+                        <label>E-posta</label>
+                        <input type="email" required placeholder="ornek@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Şifre</label>
+                        <input type="password" required placeholder="••••••••">
+                    </div>
+
+                    <div class="form-group checkbox">
+                        <label>
+                            <input type="checkbox" required>
+                            <span>Kullanım koşullarını kabul ediyorum</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="auth-submit">Kayıt Ol</button>
+
+                    <p class="auth-link">
+                        Zaten hesabınız var mı? <a href="login.html">Giriş Yap</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Slider için basit bir JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            // Her 5 saniyede bir slayt değiştir
+            setInterval(nextSlide, 5000);
+
+            // Noktalara tıklama işlevi
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    showSlide(currentSlide);
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

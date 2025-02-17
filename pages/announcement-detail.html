@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MetaTR - Tarla Krallığı'nın yeni güncellemesi hakkında detaylı bilgi">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- Kritik CSS'i inline olarak ekleyelim -->
+    <style>
+        /* Sayfa yüklenirken görünecek temel stiller */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: #f8f9fa;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        body.loaded {
+            opacity: 1;
+        }
+
+        .navbar {
+            background-color: #1a1f36;
+            padding: 1rem 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .detail-grid {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .detail-grid.loaded {
+            opacity: 1;
+        }
+    </style>
+
+    <!-- Ana CSS dosyasını optimize edilmiş şekilde yükleyelim -->
+    <link rel="preload" href="assets/css/style.css" as="style">
+    <link rel="stylesheet" href="assets/css/style.css" media="print" onload="this.media='all'; document.body.classList.add('loaded');">
+    <noscript>
+        <link rel="stylesheet" href="assets/css/style.css">
+    </noscript>
+
+    <title>Duyuru Detayı - MetaTR</title>
+</head>
+<body>
+    <!-- Üst Menü -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/images/metatr.png" alt="MetaTR Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="regions.html">Bölgeler</a></li>
+                <li><a href="shop.html">Market</a></li>
+                <li><a href="exchange.html">Borsa</a></li>
+                <li><a href="game.html">Oyun</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="profile.html" class="btn btn-profil">Profil</a>
+                <a href="home.html" class="btn btn-primary">Çıkış Yap</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <button class="mobile-close">×</button>
+        </div>
+    </nav>
+
+    <!-- Ana İçerik -->
+    <main class="container">
+        <div class="detail-grid">
+            <!-- Sol Taraf - Duyuru İçeriği -->
+            <div class="detail-content">
+                <div class="detail-header">
+                    <div class="detail-meta">
+                        <span class="date">22 Mart 2024</span>
+                        <span class="category">Güncelleme</span>
+                    </div>
+                    <h1>Yepyeni Hasat Zamanı Geldi!</h1>
+                    <div class="author-info">
+                        <img src="assets/images/avatar.png" alt="Yazar Avatar" class="author-avatar">
+                        <span class="author-name">MetaTR Ekibi</span>
+                    </div>
+                </div>
+
+                <div class="detail-body">
+                    <img src="assets/images/1.png" alt="Duyuru Görseli" class="detail-image">
+                    
+                    <div class="detail-text">
+                        <p>Çiftçi dostlar, büyük bir güncellemeyle karşınızdayız! Artık yepyeni ürünler ekmeye ve hasat etmeye hazır olun. Tarlanızı geliştirin, yeni ekipmanlar alın ve en verimli hasatı elde edin.</p>
+
+                        <h2>Yeni Özellikler</h2>
+                        <ul>
+                            <li>Yeni ürün çeşitleri</li>
+                            <li>Geliştirilmiş hasat sistemi</li>
+                            <li>Yeni tarla geliştirmeleri</li>
+                            <li>Özel ekipmanlar</li>
+                        </ul>
+
+                        <div class="detail-gallery">
+                            <div class="gallery-grid">
+                                <img src="assets/images/1.png" alt="Özellik 1" onclick="openModal(this.src)">
+                                <img src="assets/images/2.png" alt="Özellik 2" onclick="openModal(this.src)">
+                                <img src="assets/images/1.png" alt="Özellik 3" onclick="openModal(this.src)">
+                            </div>
+                        </div>
+
+                        <p class="detail-text">
+                            Bu güncelleme ile birlikte oyun deneyiminiz tamamen değişecek! Yeni ürün çeşitleri, geliştirilmiş hasat sistemi ve özel ekipmanlarla tarlanızı daha verimli hale getirebileceksiniz. Hemen güncellemeyi indirin ve yeni özellikleri keşfetmeye başlayın.
+                        </p>
+
+                        <div class="cta-box">
+                            <h3>Hemen Güncellemeyi İndir!</h3>
+                            <p>Yeni özellikleri keşfetmek için güncellemeyi hemen indir.</p>
+                            <button class="btn btn-primary">Güncelle</button>
+                        </div>
+
+                        <!-- Diğer İçerikler Bölümü -->
+                        <div class="related-content">
+                            <h2>Diğer İçerikler</h2>
+                            <div class="related-grid">
+                                <a href="#" class="related-card">
+                                    <img src="assets/images/1.png" alt="İlgili İçerik">
+                                    <div class="related-info">
+                                        <span class="related-category">Güncelleme</span>
+                                        <h3>Yeni Ürünler Eklendi</h3>
+                                        <p>Yeni ürünlerle tarlanızı zenginleştirin!</p>
+                                        <span class="related-date">20 Mart 2024</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="related-card">
+                                    <img src="assets/images/2.png" alt="İlgili İçerik">
+                                    <div class="related-info">
+                                        <span class="related-category">Etkinlik</span>
+                                        <h3>Bahar Festivali Başlıyor</h3>
+                                        <p>Özel ödüller ve etkinlikler sizleri bekliyor!</p>
+                                        <span class="related-date">19 Mart 2024</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="related-card">
+                                    <img src="assets/images/1.png" alt="İlgili İçerik">
+                                    <div class="related-info">
+                                        <span class="related-category">Duyuru</span>
+                                        <h3>Yeni Sezon Yaklaşıyor</h3>
+                                        <p>Yeni sezon hazırlıklarına başlayın!</p>
+                                        <span class="related-date">18 Mart 2024</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sağ Taraf - Reklam Alanı -->
+            <aside class="detail-sidebar">
+                <div class="sidebar-box">
+                    <h3>Reklam</h3>
+                    <div class="ad-space">
+                        <img src="assets/images/advertisement.jpeg" alt="Reklam">
+                    </div>
+                </div>
+
+                <div class="sidebar-box">
+                    <h3>Premium Üyelik</h3>
+                    <div class="premium-ad">
+                        <img src="assets/images/1.png" alt="Premium">
+                        <h4>Premium Üye Ol</h4>
+                        <p>Özel avantajlardan yararlan!</p>
+                        <a href="#" class="btn btn-primary">Detaylar</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div class="image-modal" onclick="closeModal()">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+    <script>
+        // Sayfa yüklendiğinde smooth geçiş efekti
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.detail-grid').classList.add('loaded');
+        });
+    </script>
+    <script src="assets/js/app.js" defer></script>
+</body>
+</html> 
