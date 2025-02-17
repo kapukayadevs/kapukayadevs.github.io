@@ -2455,6 +2455,69 @@ body {
 }
 
 @media (max-width: 640px) {
+    .auth-wrapper {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .auth-showcase {
+        display: none;
+    }
+
+    .auth-form-wrapper {
+        width: 100%;
+        padding: 2rem 1rem;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .auth-form-container {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+    }
+
+    .auth-logo {
+        margin-bottom: 2rem;
+    }
+
+    .auth-logo img {
+        height: 40px;
+    }
+
+    .auth-form-container h1 {
+        font-size: 1.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .auth-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .form-group input {
+        padding: 0.75rem;
+        font-size: 1rem;
+    }
+
+    .auth-submit {
+        margin-top: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
     .form-row {
         grid-template-columns: 1fr;
     }
